@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import Dominio.*;
+import Strategy.EstrategiaOrdenar;
 public class SystemImpl implements Sistema {
     private static SystemImpl instance;
     private static List<Carta> catalogo = new ArrayList<>();
@@ -27,5 +28,14 @@ public class SystemImpl implements Sistema {
         
         
     }
+    @Override
+    public void EstrategiaOrdenar(EstrategiaOrdenar estrategia) {
+        List<Carta> copia = estrategia.Ordenar(catalogo);
+        if(copia.isEmpty()) {
+            System.out.println("No se pudo Ordenar");
+            return;
+        }
+    }
 
+    
 }
