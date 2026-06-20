@@ -5,6 +5,8 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 
 import Strategy.EstrategiaOrdenar;
+import Strategy.OrdenarNombre;
+import Strategy.OrdenarPoder;
 import Strategy.OrdenarRareza;
 
 public class App {
@@ -33,7 +35,15 @@ public class App {
 
         if(opcion == 1){
             estrategia = new OrdenarRareza();
+        }else if(opcion == 2){
+            estrategia = new OrdenarNombre();
+        }else if(opcion == 3){
+            estrategia = new OrdenarPoder();
+        }else{
+            System.out.println("opcion invalida");
+            return;
         }
+        sys.EstrategiaOrdenar(estrategia);
     }
     
 }
