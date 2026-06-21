@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import Dominio.*;
 import Strategy.EstrategiaOrdenar;
+import Visitor.VisitorPuntaje;
 public class SystemImpl implements Sistema {
     private static SystemImpl instance;
     private static List<Carta> catalogo = new ArrayList<>();
@@ -20,10 +21,12 @@ public class SystemImpl implements Sistema {
     @Override
     public void LeerArchivo(String ruta) throws IOException{
         Scanner scan = new Scanner(new File(ruta));
+        VisitorPuntaje visitor = new VisitorPuntaje();
         while (scan.hasNextLine()) {
             String linea = scan.nextLine();
             Carta c = CartasFactory.LeerLinea(linea);
             catalogo.add(c);
+            c.accept(visitor);
         }
         
         
@@ -37,6 +40,7 @@ public class SystemImpl implements Sistema {
         }
         
     }
+
 
     
 }

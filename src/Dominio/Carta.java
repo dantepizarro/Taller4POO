@@ -1,6 +1,8 @@
 package Dominio;
 
-public class Carta {
+import Visitor.Visitor;
+
+public abstract class Carta {
 	protected String NombreCarta;
 	protected int Rareza;
     protected String Tipo;
@@ -11,6 +13,8 @@ public class Carta {
 		Rareza = rareza;
 		Tipo = tipo;
 	}
+
+	public abstract void accept(Visitor v);
 
 	public String getNombreCarta() {
 		return NombreCarta;
