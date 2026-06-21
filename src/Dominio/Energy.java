@@ -4,7 +4,7 @@ import Visitor.Visitor;
 
 public class Energy extends Carta{
 	protected String Element;
-	protected double Poder;
+	
 
 	protected Energy(String nombreCarta, int rareza, String tipo, String element) {
 		super(nombreCarta, rareza, tipo);
@@ -19,17 +19,11 @@ public class Energy extends Carta{
 		Element = element;
 	}
 
-	public double getPoder() {
-		return Poder;
-	}
-
-	public void setPoder(double poder) {
-		Poder = poder;
-	}
+	
 
 	@Override
-	public void accept(Visitor v) {
-		v.visit(this);
+	public double accept(Visitor v) {
+		return v.visit(this);
 	}
 
 	

@@ -5,28 +5,32 @@ import Dominio.Item;
 import Dominio.Pokemon;
 import Dominio.Supporter;
 
-public class VisitorPuntaje implements Visitor{
+public class VisitorPoder implements Visitor{
     private double Poder;
 
     public double getPoder(){ return Poder;}
     @Override
-    public void visit(Pokemon p) {
+    public double visit(Pokemon p) {
         Poder = (p.getDamage()/p.getCantEnergy())*100;
+        return Poder;
     }
 
     @Override
-    public void visit(Energy e) {
+    public double visit(Energy e) {
         Poder = 1;
+        return Poder;
     }
 
     @Override
-    public void visit(Item i) {
+    public double visit(Item i) {
         Poder = i.getBonifi()*20;
+        return Poder;
     }
 
     @Override
-    public void visit(Supporter s) {
+    public double visit(Supporter s) {
         Poder = s.getEfects()*50;
+        return Poder;
     }
     
 }

@@ -4,7 +4,7 @@ import Visitor.Visitor;
 
 public class Pokemon extends Carta{
 	protected int Damage, CantEnergy;
-	protected double Poder;
+	
 
 	protected Pokemon(String nombreCarta, int rareza, String tipo, int damage, int cantEnergy) {
 		super(nombreCarta, rareza, tipo);
@@ -30,18 +30,12 @@ public class Pokemon extends Carta{
 		CantEnergy = cantEnergy;
 	}
 
-	public double getPoder() {
-		return Poder;
-	}
-
-	public void setPoder(double poder) {
-		Poder = poder;
-	}
+	
 
 
 
 	@Override
-	public void accept(Visitor v) {
-		v.visit(this);
+	public double accept(Visitor v) {
+		return v.visit(this);
 	}
 }

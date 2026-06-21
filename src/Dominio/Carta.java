@@ -6,15 +6,33 @@ public abstract class Carta {
 	protected String NombreCarta;
 	protected int Rareza;
     protected String Tipo;
+	protected double Poder;
+	protected String rutaImagen;
     
-	protected Carta(String nombreCarta, int rareza, String tipo) {
+	public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    public double getPoder() {
+        return Poder;
+    }
+
+    public void setPoder(double poder) {
+        Poder = poder;
+    }
+
+    protected Carta(String nombreCarta, int rareza, String tipo) {
 		super();
 		NombreCarta = nombreCarta;
 		Rareza = rareza;
 		Tipo = tipo;
 	}
 
-	public abstract void accept(Visitor v);
+	public abstract double accept(Visitor v);
 
 	public String getNombreCarta() {
 		return NombreCarta;

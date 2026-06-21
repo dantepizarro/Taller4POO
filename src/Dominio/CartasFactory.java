@@ -13,6 +13,7 @@ public class CartasFactory {
                 int cantEnergias = Integer.parseInt(partes[4]);
                 return new Pokemon(NombreCarta,Rareza,tipo,Damage,cantEnergias);
                 
+                
             case "Energy":
                 String elemento = partes[3];
                 return new Energy(NombreCarta,Rareza,tipo,elemento);

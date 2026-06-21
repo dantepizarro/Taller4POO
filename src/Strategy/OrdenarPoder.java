@@ -14,9 +14,14 @@ public class OrdenarPoder implements EstrategiaOrdenar{
 
         for(int i = 0;i<copia.size()-1;i++){
             for(int j = i+1;j<copia.size();j++){
-                
+                if(copia.get(i).getPoder()< copia.get(j).getPoder()){
+                    Carta temp = copia.get(i);
+                    copia.set(i, copia.get(j));
+                    copia.set(j, temp);
+                }
             }
         }
+        return copia;
     }
 
 }

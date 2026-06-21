@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import Dominio.*;
 import Strategy.EstrategiaOrdenar;
-import Visitor.VisitorPuntaje;
+import Visitor.VisitorPoder;
 public class SystemImpl implements Sistema {
     private static SystemImpl instance;
     private static List<Carta> catalogo = new ArrayList<>();
@@ -21,24 +21,29 @@ public class SystemImpl implements Sistema {
     @Override
     public void LeerArchivo(String ruta) throws IOException{
         Scanner scan = new Scanner(new File(ruta));
-        VisitorPuntaje visitor = new VisitorPuntaje();
+        VisitorPoder visitor = new VisitorPoder();
         while (scan.hasNextLine()) {
             String linea = scan.nextLine();
             Carta c = CartasFactory.LeerLinea(linea);
             catalogo.add(c);
             c.accept(visitor);
+            c.setPoder(visitor.getPoder());
+            c.setRutaImagen(c.getNombreCarta()+".png");
         }
         
         
     }
     @Override
-    public void EstrategiaOrdenar(EstrategiaOrdenar estrategia) {
+    public String EstrategiaOrdenar(EstrategiaOrdenar estrategia) {
         List<Carta> copia = estrategia.Ordenar(catalogo);
         if(copia.isEmpty()) {
-            System.out.println("No se pudo Ordenar");
-            return;
+            return "No se pudo Ordenar";
         }
-        
+        String lista = "";
+        for(Carta c : copia){
+            lista = lista + c.getNombreCarta()+ "\n";
+        }
+        return lista;
     }
 
 

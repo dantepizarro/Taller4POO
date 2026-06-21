@@ -4,7 +4,7 @@ import Visitor.Visitor;
 
 public class Item extends Carta{
 	protected int Bonifi;
-	protected double Poder;
+	
 
 	public Item(String nombreCarta, int rareza, String tipo, int bonifi) {
 		super(nombreCarta, rareza, tipo);
@@ -20,18 +20,12 @@ public class Item extends Carta{
 		Bonifi = bonifi;
 	}
 
-	public double getPoder() {
-		return Poder;
-	}
-
-	public void setPoder(double poder) {
-		Poder = poder;
-	}
+	
 
 
 	@Override
-	public void accept(Visitor v) {
-		v.visit(this);
+	public double accept(Visitor v) {
+		return v.visit(this);
 	}
 
 

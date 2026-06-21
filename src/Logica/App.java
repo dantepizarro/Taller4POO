@@ -14,16 +14,17 @@ public class App {
     private static SystemImpl sys = SystemImpl.getInstance();
     public static void main(String[] args) throws IOException{
     	sys.LeerArchivo("Sobres.txt");
-    	
+        Ordenar();
+    	iniciar();
     }
-    public void iniciar(){
+    public static void iniciar(){
         JFrame principal = new JFrame("Menu Principal");
         principal.setSize(300,400);
         principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         principal.setVisible(true);
 
     }
-    public void Ordenar(){
+    public static void Ordenar(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Eliga su Ordenamiento: ");
         System.out.println("1) Por Rareza: ");
@@ -43,7 +44,7 @@ public class App {
             System.out.println("opcion invalida");
             return;
         }
-        sys.EstrategiaOrdenar(estrategia);
+        System.out.println(sys.EstrategiaOrdenar(estrategia));;
     }
     
 }
